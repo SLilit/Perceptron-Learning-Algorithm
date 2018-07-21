@@ -32,6 +32,14 @@ def perceptron_learning(train, label, weights):
               
     return [weights, sum_error]
 
+while sum_error != 0:
+    update = perceptron_learning(X_train, Y_train, new_weights)
+    new_weights = update[0]
+    w.append(new_weights[:])
+    sum_error = update[1]
+    print (new_weights)
+    
 
+np.savetxt(sys.argv[2], w[1:], delimiter = ",")
 
 
