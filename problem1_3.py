@@ -18,4 +18,20 @@ def perceptron_predict(train_row, weights):
 
 
     
+def perceptron_learning(train, label, weights):
+    sum_error = 0
+    
+    for i in range(len(train)):
+        predicted = perceptron_predict(train[i], weights)
+        error = label[i] - predicted
+        sum_error += error**2
+        if predicted*label[i] <= 0:
+            weights[2] += int(label[i])
+            weights[0] += int(train[i][0]*label[i])
+            weights[1] += int(train[i][1]*label[i])
+              
+    return [weights, sum_error]
+
+
+
 
